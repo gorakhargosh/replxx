@@ -1,0 +1,36 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
+
+cc_binary(
+    name = "example_c",
+    srcs = [
+        "c-api.c",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":examples_util_lib",
+    ],
+)
+
+cc_binary(
+    name = "example_cc",
+    srcs = [
+        "cxx-api.cxx",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":examples_util_lib",
+    ],
+)
+
+cc_library(
+    name = "examples_util_lib",
+    srcs = [
+        "util.c",
+    ],
+    hdrs = [
+        "util.h",
+    ],
+    deps = [
+        "//:replxx",
+    ],
+)

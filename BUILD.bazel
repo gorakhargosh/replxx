@@ -1,0 +1,24 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+licenses(["notice"])  # BSD
+
+exports_files(["LICENSE.md"])
+
+cc_library(
+    name = "replxx",
+    srcs = glob([
+        "src/**/*.cpp",
+        "src/**/*.cxx",
+    ]),
+    hdrs = glob([
+        "include/**/*.h",
+        "include/**/*.hxx",
+        "src/**/*.h",
+        "src/**/*.hxx",
+    ]),
+    includes = [
+        "include",
+    ],
+    linkstatic = True,
+    visibility = ["//visibility:public"],
+)
